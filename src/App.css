@@ -43,3 +43,16 @@ li {
   border-radius: 3px;
   font-size: 0.9rem;
 }
+
+.task-text {
+  flex: 1;
+}
+
+.task-completed {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.task-pending {
+  text-decoration: none;
+}
