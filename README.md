@@ -1,8 +1,24 @@
-# Getting Started with Create React App
+# 📝 React To-Do List Application
+
+A simple, elegant to-do list application built with React. Manage your daily tasks with an intuitive interface.
+
+## ✨ Features
+
+- ➕ Add new tasks
+- 🗑️ Delete tasks
+- 🎨 Clean Bootstrap-styled interface
+- ⚡ Fast and responsive
+
+## 🚀 Quick Start
+
+First, install dependencies:
+```bash
+npm install
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 📋 Available Scripts
 
 In the project directory, you can run:
 
@@ -28,6 +44,10 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## 🎯 What's Next?
+
+Check out [CAPABILITIES.md](./CAPABILITIES.md) to see all the features and enhancements that can be added to this application!
 
 ### `npm run eject`
 
