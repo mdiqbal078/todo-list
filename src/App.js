@@ -5,8 +5,13 @@ import "./App.css";
 
 function App() {
   const [tasks, setTasks] = useState(() => {
-    const saved = localStorage.getItem("todoTasks");
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem("todoTasks");
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.error("Failed to load tasks from localStorage:", error);
+      return [];
+    }
   });
 
   useEffect(() => {
@@ -15,17 +20,17 @@ function App() {
 
   const addTask = (task) => {
     if (!task.trim()) return;
-    setTasks([...tasks, { text: task, completed: false }]);
+    setTasks([...tasks, { id: Date.now(), text: task, completed: false }]);
   };
 
-  const deleteTask = (idx) => {
-    setTasks(tasks.filter((_, i) => i !== idx));
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const toggleTask = (idx) => {
+  const toggleTask = (id) => {
     setTasks(
-      tasks.map((task, i) =>
-        i === idx ? { ...task, completed: !task.completed } : task
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
   };
@@ -52,13 +57,13 @@ function App() {
                 </div>
               ) : (
                 <ul className="list-group mt-3">
-                  {tasks.map((t, i) => (
+                  {tasks.map((t) => (
                     <TodoItem
-                      key={i}
+                      key={t.id}
                       text={t.text}
                       completed={t.completed}
-                      onToggle={() => toggleTask(i)}
-                      onDelete={() => deleteTask(i)}
+                      onToggle={() => toggleTask(t.id)}
+                      onDelete={() => deleteTask(t.id)}
                     />
                   ))}
                 </ul>

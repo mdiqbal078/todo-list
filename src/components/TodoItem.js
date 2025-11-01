@@ -7,13 +7,7 @@ function TodoItem({ text, completed, onToggle, onDelete }) {
         checked={completed}
         onChange={onToggle}
       />
-      <span
-        style={{
-          textDecoration: completed ? "line-through" : "none",
-          color: completed ? "#6c757d" : "inherit",
-          flex: 1,
-        }}
-      >
+      <span className={`task-text ${completed ? "task-completed" : "task-pending"}`}>
         {text}
       </span>
       <button className="btn btn-sm btn-danger ms-2" onClick={onDelete}>
